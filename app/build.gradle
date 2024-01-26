@@ -1,0 +1,44 @@
+plugins {
+    // Apply the application plugin to add support for building a CLI application in Java.
+    id 'java'
+    id 'java-library'
+    id 'application'
+}
+
+group = 'includeBuildTest'
+version = '0.0.1'
+
+repositories {
+    // Use Maven Central for resolving dependencies.
+    mavenCentral()
+}
+
+dependencies {
+    // This dependency is used by the application.
+    implementation libs.guava
+    implementation 'includeBuildTest:share:0.0.1'
+    implementation 'includeBuildTest:dao:0.0.1'
+    implementation 'includeBuildTest:base:0.0.1'
+}
+
+testing {
+    suites {
+        // Configure the built-in test suite
+        test {
+            // Use JUnit Jupiter test framework
+            useJUnitJupiter('5.10.0')
+        }
+    }
+}
+
+// Apply a specific Java toolchain to ease working on different environments.
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(21)
+    }
+}
+
+application {
+    // Define the main class for the application.
+    mainClass = 'app.App'
+}

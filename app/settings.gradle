@@ -1,0 +1,16 @@
+plugins {
+    id 'org.gradle.toolchains.foojay-resolver-convention' version '0.7.0'
+}
+
+dependencyResolutionManagement {
+    versionCatalogs {
+        libs {
+            from(files("../build-settings/libs.versions.toml"))
+        }
+    }
+}
+
+rootProject.name = 'app'
+includeBuild '../share'
+includeBuild '../dao'
+includeBuild '../base'
